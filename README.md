@@ -1,5 +1,10 @@
 # Evaluation-of-Frame-Field-Learning-using-Orthophotos
-This repository attempts to produce the results  
+This repository attempts to produce the results
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ENVIRONMENT SETUP
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DATASET
@@ -20,10 +25,10 @@ The processed images have been provided which can be directly used for training.
 CONFIGURATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 There is one main configuration file for each of the datasets, namely:
-1.
-2.
+1. inria_dataset_polygonized.unet_resnet101_pretrained
+2. private_dataset_polygonized.unet_resnet101_pretrained
 
-The parameters can be changed accordingly depending on the experiment one wants to perform. The other config files are all connected to the above two main files.
+The parameters can be changed accordingly depending on the experiment one wants to perform. The other config files are all connected to the above two main files. The following parameters can be changed in order to perform the experiments explained in the paper.
 1. 
 2.
 3.
@@ -33,30 +38,50 @@ The parameters can be changed accordingly depending on the experiment one wants 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TRAINING
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-python main.py --config configs/<name_of_config> 
-
+python main.py --config configs/<name_of_config> --gpus 1
+python main.py --config private_dataset_polygonized.unet_resnet101_pretrained --gpus 1
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PRE-TRAINED MODEL
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1. Upload the zipped folder onto jupyter notebook.
-2. Unzip it using the unzip.py script.
-3. Rename the file separating the name and date stamp with a '|' like so: 
+The zip folder of the pre-trained models can be downloaded from here: 
 
+1. Upload the zipped folder onto jupyter notebook.
+2. Unzip it using the following:
+
+  # Fixes the zip file in case it is corrupted
+  !zip -FF inria_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.zip -O private_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.fixed.zip 
+
+  # Unzips the file and saves it in the same location
+  !unzip ~/Polygonization-by-Frame-Field-Learning/frame_field_learning/runs/private_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.fixed.zip
+
+3. Rename the file separating the name and datetime stamp with a '|' like so: 
+  private_dataset_polygonized.unet_resnet101_pretrained | 2022_05_10_10_05_30
+  
+ This can be used as run_name during inference without the datetime stamp.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 INFERENCE
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 The inference can be run on any image using the pre-trained models provided above or using a new run.
 
-python main.py --run_name <name_of_run> --in_filepath <path_to_image>
+python main.py --in_filepath <path_to_image> --run_name <name_of_run>
+
+python main.py --in_filepath /home/jovyan/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --run_name private_dataset_polygonized_unet_resnet101_pretrained
+
+Saves the predicted shapefiles in the same folder.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 METRICS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-The IoU and tangent angle metrics can be evaluated for each image as below:
+The IoU and tangent angle metrics can be evaluated for each image as below using the image and ground truth shapefile:
 
-python 
+1. change directory to scripts: cd scripts
+2. python eval_shapefiles.py --im_filepath <path_to_image> --gt_filepath <path_to_gt_shapefile> --pred_filepath <path_to_predicted_shapefiles>
+  python eval_shapefiles.py --im_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --gt_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/shp/bad_bodenteich3.shp --pred_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/poly_shapefile.simple.tol_1/bad_bodenteich3.shp
+3. Run check.py to get the average values of IoU and tangent angle for each image.
+
+
 
 
 ![image](https://user-images.githubusercontent.com/60517504/183388572-f455dc82-647d-475f-aa8e-8eb0aed09db1.png)
