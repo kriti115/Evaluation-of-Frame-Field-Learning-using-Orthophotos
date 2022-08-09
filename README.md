@@ -50,10 +50,10 @@ The zip folder of the pre-trained models can be downloaded from here:
 1. Upload the zipped folder onto jupyter notebook.
 2. Unzip it using the following:
 
-  # Fixes the zip file in case it is corrupted
+Fixes the zip file in case it is corrupted
   !zip -FF inria_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.zip -O private_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.fixed.zip 
 
-  # Unzips the file and saves it in the same location
+Unzips the file and saves it in the same location
   !unzip ~/Polygonization-by-Frame-Field-Learning/frame_field_learning/runs/private_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.fixed.zip
 
 3. Rename the file separating the name and datetime stamp with a '|' like so: 
