@@ -135,6 +135,5 @@ RESULTS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 The results on INRIA dataset can be seen below where a building with hole in the city of Innsbruck is well polygonized, followed by a series of attached building in SanFrancisco which are polygonized somewhere in cluster and not separately as wanted.
 
-![image](images/innsbruck18_original_hole.png |width=100px)
-<img src='images/innsbruck18_original_hole.png' width = '100' height = '100'>
-![image](images/innsbruck18_asm_hole.png)
+<img src='images/innsbruck18_original_hole.png' width = '250' height = '250'>
+<img src='images/innsbruck18_asm_hole.png' width = '250' height = '250'>
