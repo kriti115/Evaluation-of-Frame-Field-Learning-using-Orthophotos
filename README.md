@@ -137,4 +137,4 @@ The results on INRIA dataset can be seen below where a building with hole in the
 
 <img src='images/innsbruck18_original_hole.png' width = '250' height = '250'> <img src='images/innsbruck18_asm_hole.png' width = '250' height = '250'>
 
-<img src='images/sfo16_original.png' width = '250' height = '250'> <img src='images/sfo16_simple_for_comp.png' width = '250' height = '250'>
+<img src='images/sfo16_original.png' width = '350' height = '250'> <img src='images/sfo16_simple_for_comp.png' width = '350' height = '250'>
