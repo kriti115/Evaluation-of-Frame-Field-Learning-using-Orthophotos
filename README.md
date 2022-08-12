@@ -135,8 +135,9 @@ RESULTS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 The results on INRIA dataset can be seen below where a building with hole in the city of Innsbruck is well polygonized, followed by a series of attached building in SanFrancisco which are polygonized somewhere in cluster and not separately as wanted.
 
-<img src='images/innsbruck18_original_hole.png' width = '250' height = '250'> <img src='images/innsbruck18_asm_hole.png' width = '250' height = '250'>
-
+<p align="center">
+  <img src='images/innsbruck18_original_hole.png' width = '250' height = '250'> <img src='images/innsbruck18_asm_hole.png' width = '250' height = '250'>
+</p>
 <img src='images/sfo16_original.png' width = '350' height = '250'> <img src='images/sfo16_asm.png' width = '350' height = '250'>
 
 The results for large scale real world dataset can be seen below where a building with sharp edges in the city of Uelzen has been well polygonized, followed by a series of single standing buildings in Bad bodenteich which are polygonized well as well. Another building from Uelzen has been shown where the curve of the building is well polygonized while obstruction due to the shadow of a tree leads to improper polygonization.
@@ -144,3 +145,5 @@ The results for large scale real world dataset can be seen below where a buildin
 <img src='images/uelzen3_original.png' width = '250' height = '250'> <img src='images/uelzen3_asm.png' width = '250' height = '250'>
 
 <img src='images/bad_bodenteich3_original.png' width = '350' height = '250'> <img src='images/bad_bodenteich3.png' width = '350' height = '250'>
+
+<img src='images/uel3_curve_original.png' width = '250' height = '250'> <img src='images/uel3_asm_shadow_curve.png' width = '250' height = '250'>
