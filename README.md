@@ -24,7 +24,7 @@ https://github.com/Lydorn/Polygonization-by-Frame-Field-Learning
 https://tubcloud.tu-berlin.de/s/M6PobTMpaX6q7Ap
 
 Train on raw images from scratch:
-The raw images are cropped into 725 x 725 patches and stored in a folder called processed which is created during the initial training. The calculation of tangent angle to be used as annotation for frame field is calculated during this step.
+The raw images are cropped into 725 x 725 patches and stored in a folder called processed which is created during the initial training. The calculation of tangent angle to be used as annotation for frame field is calculated during this step as well.
 
 Store the dataset in a folder called data and save the annotations and images in subfolders as below:
 - data
@@ -59,11 +59,16 @@ The parameters can be changed accordingly depending on the experiment one wants 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PRE-TRAINED MODEL
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-The zip folder of the pre-trained models can be downloaded from here: 
-For INRIA dataset: https://drive.google.com/file/d/1bUuiJD148AbVU_GvRlcMNZZzSz3K3JG9/view?usp=sharing
-For Large scale real world dataset: 
+Once the data is uploaded, the inference can be run on any image using the pre-trained models.
 
-1. Upload the zipped folder onto jupyter notebook.
+Download the zipped pre-trained models and unzip them inside the folder frame_field_learning inside the subfolder runs.
+
+The zip folder of the pre-trained models can be downloaded from here: 
+- For INRIA dataset: https://drive.google.com/file/d/1bUuiJD148AbVU_GvRlcMNZZzSz3K3JG9/view?usp=sharing
+
+- For Large scale real world dataset: 
+
+1. Upload the zipped folder onto jupyter notebook (/frame_field_learning/runs).
 2. Unzip it using the following:
 
 - Fixes the zip file in case it is corrupted
@@ -84,23 +89,21 @@ For Large scale real world dataset:
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TRAINING
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Once the data is uploaded, training can begin as below:
+If inference is not sufficient and training wants to be performed, it can begin as below:
 
 - python main.py --config configs/<name_of_config> --gpus 1
 - python main.py --config configs/private_dataset_polygonized.unet_resnet101_pretrained --gpus 1
 
-
-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 INFERENCE
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-The inference can be run on any image using the pre-trained models provided above or using a new run.
+The inference can be run on any image using the pre-trained models provided above or using a new run after training.
 
 python main.py --in_filepath <path_to_image> --run_name <name_of_run>
 
 python main.py --in_filepath /home/jovyan/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --run_name private_dataset_polygonized_unet_resnet101_pretrained
 
-Saves the predicted shapefiles in the same folder.
+Saves the predicted shapefiles in the same folder. In case the shapefiles are not saved, the config.json inside the runs folder can be changed to 'true' wherever necessary.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 METRICS
@@ -127,7 +130,12 @@ The logs that are saved inside the runs folder can be used to track the training
 5. Then type: tensorboard --logdir=<name_of_log>
 6. Let it run until it displays a local host link like so: http://localhost:6006/. Run this link in the browser to access the data inside the tensorboard.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+RESULTS
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+The results on INRIA dataset can be seen below where a building with hole in the city of Innsbruck is well polygonized, followed by a series of attached building in SanFrancisco which are polygonized somewhere in cluster and not separately as wanted.
 
+![image](images/innsbruck18_original_hole.png)
+![image](images/innsbruck18_asm_hole.png)
 
-![image](https://user-images.githubusercontent.com/60517504/183388572-f455dc82-647d-475f-aa8e-8eb0aed09db1.png)
 
