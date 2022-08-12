@@ -5,7 +5,7 @@ This repository attempts to produce the results
 ENVIRONMENT SETUP
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-For setting up the environment use the 'environment.yml' file. Run the following in the terminal to create and activate the environment, here it is naed frame_field. 
+For setting up the environment use the 'environment.yml' file. Run the following in the terminal to create and activate the environment, here it is named frame_field. 
 
 - conda init bash
 - source .bashrc
@@ -60,6 +60,8 @@ The parameters can be changed accordingly depending on the experiment one wants 
 PRE-TRAINED MODEL
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 The zip folder of the pre-trained models can be downloaded from here: 
+For INRIA dataset: https://drive.google.com/file/d/1bUuiJD148AbVU_GvRlcMNZZzSz3K3JG9/view?usp=sharing
+For Large scale real world dataset: 
 
 1. Upload the zipped folder onto jupyter notebook.
 2. Unzip it using the following:
