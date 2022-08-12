@@ -40,6 +40,7 @@ Store the dataset in a folder called data and save the annotations and images in
         - gt_polygons (npy files)
 
 The path of data directory must be changed in 'configs/config.defaults.json' in 'data_dir_candidates'.
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONFIGURATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -54,11 +55,6 @@ The parameters can be changed accordingly depending on the experiment one wants 
 4. Frame field parameters: in configs/config.defaults.json; when the compute_crossfield parameter is set to false, the frame field is not computed and simple segmentation takes place.
 5. Segmentation parameters: in configs/config.defaults.json; in seg_params; when compute_edge is set to false, the exterior of the polygons is not considered during segmentation.
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-TRAINING
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-python main.py --config configs/<name_of_config> --gpus 1
-python main.py --config private_dataset_polygonized.unet_resnet101_pretrained --gpus 1
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PRE-TRAINED MODEL
@@ -68,18 +64,30 @@ The zip folder of the pre-trained models can be downloaded from here:
 1. Upload the zipped folder onto jupyter notebook.
 2. Unzip it using the following:
 
-Fixes the zip file in case it is corrupted
+- Fixes the zip file in case it is corrupted
 
-!zip -FF inria_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.zip -O private_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.fixed.zip 
+  - !zip -FF inria_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.zip -O private_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.fixed.zip 
 
-Unzips the file and saves it in the same location
+- Unzips the file and saves it in the same location
   
-!unzip ~/Polygonization-by-Frame-Field-Learning/frame_field_learning/runs/private_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.fixed.zip
+  - !unzip ~/Polygonization-by-Frame-Field-Learning/frame_field_learning/runs/private_dataset_polygonized_unet_resnet101_pretrained_2022_05_10_10_05_30.fixed.zip
 
 3. Rename the file separating the name and datetime stamp with a '|' like so: 
   private_dataset_polygonized.unet_resnet101_pretrained | 2022_05_10_10_05_30
   
- This can be used as run_name during inference without the datetime stamp.
+ This can be used as run_name during inference without the datetime stamp like so:
+ 
+ - python main.py --in_filepath <path_to_image> --run_name  private_dataset_polygonized.unet_resnet101_pretrained
+ 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TRAINING
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Once the data is uploaded, training can begin as below:
+
+- python main.py --config configs/<name_of_config> --gpus 1
+- python main.py --config configs/private_dataset_polygonized.unet_resnet101_pretrained --gpus 1
+
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 INFERENCE
@@ -98,10 +106,24 @@ METRICS
 The IoU and tangent angle metrics can be evaluated for each image as below using the image and ground truth shapefile:
 
 1. change directory to scripts: cd scripts
+
 2. python eval_shapefiles.py --im_filepath <path_to_image> --gt_filepath <path_to_gt_shapefile> --pred_filepath <path_to_predicted_shapefiles>
-  python eval_shapefiles.py --im_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --gt_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/shp/bad_bodenteich3.shp --pred_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/poly_shapefile.simple.tol_1/bad_bodenteich3.shp
+  - python eval_shapefiles.py --im_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --gt_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/shp/bad_bodenteich3.shp --pred_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/poly_shapefile.simple.tol_1/bad_bodenteich3.shp
+  
 3. Run check.py to get the average values of IoU and tangent angle for each image.
 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TENSORBOARD
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+The logs that are saved inside the runs folder can be used to track the training process and the graphs for loss and some predictions can be viewed on tensorboard through the following way:
+
+1. Create a virtual environment on your local machine eg. virtual_env.
+2. On your command prompt change directory to the virtual_env.
+3. Activate it using 'Scripts/activate.bat'; now we are inside the virtual environment.
+4. Change directora to where the logs are saved.
+5. Then type: tensorboard --logdir=<name_of_log>
+6. Let it run until it displays a local host link like so: http://localhost:6006/. Run this link in the browser to access the data inside the tensorboard.
 
 
 
