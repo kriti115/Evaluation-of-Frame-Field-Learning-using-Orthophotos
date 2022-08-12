@@ -1,5 +1,9 @@
 # Evaluation-of-Frame-Field-Learning-using-Orthophotos
-This repository attempts to produce the results
+This repository attempts to produce the results of the original work by Girard et.al. https://github.com/Lydorn/Polygonization-by-Frame-Field-Learning.
+In this repository:
+- The environment setup has been made simple by removing the hard coded versions from packages. 
+- The training and inference has been made runnable by making changes within the code and debugging errors. 
+- The model has been trained on a new dataset called the large scale real world dataset with data from Lower Saxony, Germany.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ENVIRONMENT SETUP
