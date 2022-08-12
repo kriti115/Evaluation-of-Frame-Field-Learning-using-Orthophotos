@@ -4,24 +4,42 @@ This repository attempts to produce the results
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ENVIRONMENT SETUP
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-environment.yml 
-conda activate
+
+For setting up the environment use the 'environment.yml' file. Run the following in the terminal to create and activate the environment, here it is naed frame_field. 
+
+- conda init bash
+- source .bashrc
+- conda config --set channel_priority false
+- conda env create -f environment.yml -p ~/frame_field
+- conda activate /home/jovyan/frame_field </the-complete-path-to-the-environment-created>
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DATASET
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1. INRIA Aerial Dataset can be downloaded from the link below:
+1. INRIA Aerial Dataset can be downloaded using the link from the original work:
+https://github.com/Lydorn/Polygonization-by-Frame-Field-Learning
 
 
 2. Large Scale Real World Dataset can be downloaded from the link below:
 https://tubcloud.tu-berlin.de/s/M6PobTMpaX6q7Ap
 
 Train on raw images from scratch:
-The raw images are cropped into 725 x 725 patches and stored in a folder called processed, which is used for training. This is the course to take in case you want to train using new dataset.
+The raw images are cropped into 725 x 725 patches and stored in a folder called processed which is created during the initial training. The calculation of tangent angle to be used as annotation for frame field is calculated during this step.
 
-Processed Folder:
-The processed images have been provided which can be directly used for training. This is the course to take if we want to train on the existing dataset, either the INRIA or the large scale real world dataset.
+Store the dataset in a folder called data and save the annotations and images in subfolders as below:
+- data
+  - PrivateDataset
+    - raw
+      - train
+        - images
+        - gt (binary masks)
+        - gt_polygonized (geojson files)
+        - gt_polygons (npy files)
+      - test
+        - images
+        - gt_polygons (npy files)
 
+The path of data directory must be changed in 'configs/config.defaults.json' in 'data_dir_candidates'.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONFIGURATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -30,11 +48,11 @@ There is one main configuration file for each of the datasets, namely:
 2. private_dataset_polygonized.unet_resnet101_pretrained
 
 The parameters can be changed accordingly depending on the experiment one wants to perform. The other config files are all connected to the above two main files. The following parameters can be changed in order to perform the experiments explained in the paper.
-1. 
-2.
-3.
-4.
-5.
+1. CNN Network Backbone: In the respective main config file mentioned above, the 'default_filepath' can be changed in the 'backbone_params' parameters to any of the backbone_params.json provided. Also the 'encoder_depth' can be changed for changing the number of layers in the respective backbone.
+2. Regularization: in configs/backbone_params.json: the value of dropout_2d can be changed to tweak the dropout value.
+3. Hyperparameters: in configs/optim_params.json; the value for max_lr and base_lr can be changed for twaeking the learning rate.
+4. Frame field parameters: in configs/config.defaults.json; when the compute_crossfield parameter is set to false, the frame field is not computed and simple segmentation takes place.
+5. Segmentation parameters: in configs/config.defaults.json; in seg_params; when compute_edge is set to false, the exterior of the polygons is not considered during segmentation.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TRAINING
