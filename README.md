@@ -137,4 +137,10 @@ The results on INRIA dataset can be seen below where a building with hole in the
 
 <img src='images/innsbruck18_original_hole.png' width = '250' height = '250'> <img src='images/innsbruck18_asm_hole.png' width = '250' height = '250'>
 
-<img src='images/sfo16_original.png' width = '350' height = '250'> <img src='images/sfo16_simple_for_comp.png' width = '350' height = '250'>
+<img src='images/sfo16_original.png' width = '350' height = '250'> <img src='images/sfo16_asm.png' width = '350' height = '250'>
+
+The results for large scale real world dataset can be seen below where a building with sharp edges in the city of Uelzen has been well polygonized, followed by a series of single standing buildings in Bad bodenteich which are polygonized well as well. Another building from Uelzen has been shown where the curve of the building is well polygonized while obstruction due to the shadow of a tree leads to improper polygonization.
+
+<img src='images/uelzen3_original.png' width = '250' height = '250'> <img src='images/uelzen3_asm.png' width = '250' height = '250'>
+
+<img src='images/bad_bodenteich3_original.png' width = '350' height = '250'> <img src='images/bad_bodenteich3.png' width = '350' height = '250'>
