@@ -137,7 +137,9 @@ The results on INRIA dataset can be seen below where a building with hole in the
 
 <p align="center">
   <img src='images/innsbruck18_original_hole.png' width = '250' height = '250'> <img src='images/innsbruck18_asm_hole.png' width = '250' height = '250'>
+</p>
 
+<p align="center">
   <img src='images/sfo16_original.png' width = '350' height = '250'> <img src='images/sfo16_asm.png' width = '350' height = '250'>
 </p>
 
@@ -145,8 +147,10 @@ The results for large scale real world dataset can be seen below where a buildin
 
 <p align="center">
   <img src='images/uelzen3_original.png' width = '250' height = '250'> <img src='images/uelzen3_asm.png' width = '250' height = '250'>
-
+</p>
+<p align="center">
   <img src='images/bad_bodenteich3_original.png' width = '350' height = '250'> <img src='images/bad_bodenteich3.png' width = '350' height = '250'>
-
+</p>
+<p align="center">
   <img src='images/uel3_curve_original.png' width = '250' height = '250'> <img src='images/uel3_asm_shadow_curve.png' width = '250' height = '250'>
 </p>
