@@ -66,7 +66,7 @@ Download the zipped pre-trained models and unzip them inside the folder frame_fi
 The zip folder of the pre-trained models can be downloaded from here: 
 - For INRIA dataset: https://drive.google.com/file/d/1bUuiJD148AbVU_GvRlcMNZZzSz3K3JG9/view?usp=sharing
 
-- For Large scale real world dataset: 
+- For Large scale real world dataset: https://drive.google.com/file/d/147BGJQdn95gj_Cro_A2MSFkEkG2-99_M/view?usp=sharing
 
 1. Upload the zipped folder onto jupyter notebook (/frame_field_learning/runs).
 2. Unzip it using the following:
@@ -136,3 +136,5 @@ RESULTS
 The results on INRIA dataset can be seen below where a building with hole in the city of Innsbruck is well polygonized, followed by a series of attached building in SanFrancisco which are polygonized somewhere in cluster and not separately as wanted.
 
 <img src='images/innsbruck18_original_hole.png' width = '250' height = '250'> <img src='images/innsbruck18_asm_hole.png' width = '250' height = '250'>
+
+<img src='images/sfo16_original.png' width = '250' height = '250'> <img src='images/sfo16_simple_for_comp.png' width = '250' height = '250'>
