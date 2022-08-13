@@ -206,7 +206,7 @@ class Trainer:
 
         # batch_index_offset = 0
         epoch_iterator = dl
-        print('Epoch iterator used as train_dl Line 209 trainer : ', epoch_iterator)
+        #print('Epoch iterator used as train_dl Line 209 trainer : ', epoch_iterator)
         if self.gpu == 0:
             epoch_iterator = tqdm(epoch_iterator, desc="{}: ".format(split_name), leave=False)
         for i, batch in enumerate(epoch_iterator):
