@@ -15,8 +15,17 @@ For setting up the environment use the 'environment.yml' file. Run the following
 - source .bashrc
 - conda config --set channel_priority false
 - conda env create -f environment.yml -p ~/frame_field
-- conda activate /home/jovyan/frame_field </the-complete-path-to-the-environment-created>
+- conda activate /home/frame_field </the-complete-path-to-the-environment-created>
 
+Takes .. minutes to create environment. This only needs to be done once.
+
+After the environment is created, in order to activate it the next time just use:
+- conda init bash
+- source .bashrc
+- conda activate /home/frame_field </the-complete-path-to-the-environment-created>
+
+Change to the required directory: 
+- cd Evaluation_of_Frame_Field_Learning_using_Orthophotos
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DATASET
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
