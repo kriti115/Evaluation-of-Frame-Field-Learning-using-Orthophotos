@@ -36,9 +36,6 @@ https://github.com/Lydorn/Polygonization-by-Frame-Field-Learning
 2. Large Scale Real World Dataset can be downloaded from the link below:
 https://tubcloud.tu-berlin.de/s/M6PobTMpaX6q7Ap
 
-Train on raw images from scratch:
-The raw images are cropped into 725 x 725 patches and stored in a folder called processed which is created during the initial training. The calculation of tangent angle to be used as annotation for frame field is calculated during this step as well.
-
 Store the dataset in a folder called data and save the annotations and images in subfolders as below:
 - data
   - PrivateDataset
@@ -51,8 +48,20 @@ Store the dataset in a folder called data and save the annotations and images in
       - test
         - images
         - gt_polygons (npy files)
+        
+Train on raw images from scratch:
+The raw images are cropped into 725 x 725 patches and stored in a folder called processed which is created during the initial training. The calculation of tangent angle to be used as annotation for frame field is calculated during this step as well.
 
 The path of data directory must be changed in 'configs/config.defaults.json' in 'data_dir_candidates'.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TRAINING
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+If inference is not sufficient and training wants to be performed, it can begin as below:
+
+- python main.py --config configs/<name_of_config> --gpus 1
+- python main.py --config configs/private_dataset_polygonized.unet_resnet101_pretrained --gpus 1
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONFIGURATIONS
@@ -98,14 +107,7 @@ The zip folder of the pre-trained models can be downloaded from here:
  This can be used as run_name during inference without the datetime stamp like so:
  
  - python main.py --in_filepath <path_to_image> --run_name  private_dataset_polygonized.unet_resnet101_pretrained
- 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-TRAINING
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-If inference is not sufficient and training wants to be performed, it can begin as below:
 
-- python main.py --config configs/<name_of_config> --gpus 1
-- python main.py --config configs/private_dataset_polygonized.unet_resnet101_pretrained --gpus 1
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 INFERENCE
