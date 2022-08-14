@@ -133,7 +133,7 @@ dependencies:
   - libxcb
   - libxkbcommon
   - libxml2
-  - llvmlite=0.31.0
+  - llvmlite=0.36.0
   - lz4-c
   - markdown
   - markupsafe
@@ -158,7 +158,7 @@ dependencies:
   - notebook
   - nspr
   - nss
-  - numba=0.48.0=py38h0573a6f_0
+  - numba=0.53.0=py38h0573a6f_0
   - numpy-base
   - oauthlib
   - olefile
@@ -272,7 +272,7 @@ dependencies:
     - coverage==5.1
     - descartes==1.0.1
     - gym==0.17.1
-    - imagecodecs==2020.2.18
+    - imagecodecs==2021.3.31
     - more-itertools==8.2.0
     - numpy==1.23.0
     - packaging==20.3
