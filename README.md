@@ -28,6 +28,7 @@ Change to the required directory:
 - cd Evaluation_of_Frame_Field_Learning_using_Orthophotos
 
 P.S.: It takes over an hour to create the complete environment.
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DATASET
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -56,13 +57,18 @@ Train on raw images from scratch:
 
 # Note:
 
-We have used numba=0.53.0 and in case of error such as: 
+1. We have used numba=0.53.0 and in case of error such as: 
 
 AttributeError: module 'numba' has no attribute 'jitclass', the skan package needs to be edited due to incompability to the newer numba version.
 
 - Go to /home/frame_field/lib/python3.8/site-packages/skan/csr.py 
 - On Line 21 of csr.py, change '@numba.jitclass(csr_spec)' to '@numba.experimental.jitclass(csr_spec)'
 
+2. RuntimeError: DataLoader worker (pid(s) 11355) exited unexpectedly
+change num_workers to 0
+
+3. ValueError: Number of processes must be at least 1
+change num_workers to 1
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONFIGURATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -171,3 +177,11 @@ The results for large scale real world dataset can be seen below where a buildin
 </p>
 
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PREPARATION OF OWN DATASET
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+For preparation of own dataset to be inserted into the network the following repository can be used.
+
+https://github.com/kriti115/Dataset-Preparation-for-Frame-Field-Learning-using-Orthophotos
+Talk about polygonize_mask.py
