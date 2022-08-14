@@ -158,3 +158,14 @@ The results for large scale real world dataset can be seen below where a buildin
 <p align="center">
   <img src='images/uel3_curve_original.png' width = '250' height = '250'> <img src='images/uel3_asm_shadow_curve.png' width = '250' height = '250'>
 </p>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NOTES
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+The various errors that might pop up during training are discussed and clarified below for smooth implementation.
+We have used numba=0.53.0 and in case of error such as: 
+
+AttributeError: module 'numba' has no attribute 'jitclass', the skan package needs to be edited due to incompability to the newer numba version.
+
+- Go to /home/frame_field/lib/python3.8/site-packages/skan/csr.py 
+- On Line 21 change @numba.jitclass(csr_spec) to @numba.experimental.jitclass(csr_spec)
