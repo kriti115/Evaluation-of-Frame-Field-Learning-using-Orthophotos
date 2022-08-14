@@ -116,6 +116,7 @@ def get_private_dataset_folds(config, root_dir, folds):
     return ds_list
 
 
+''' Add here for your own dataset '''
 
 
 def get_folds(config, root_dir, folds):
@@ -127,6 +128,8 @@ def get_folds(config, root_dir, folds):
     
     elif config["dataset_params"]["root_dirname"] == "PrivateDataset":
         return get_private_dataset_folds(config, root_dir, folds)
+    
+    ''' Add here for your own dataset '''
 
     else:
         print_utils.print_error("ERROR: config[\"data_root_partial_dirpath\"] = \"{}\" is an unknown dataset! "
