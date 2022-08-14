@@ -26,6 +26,8 @@ After the environment is created, in order to activate it the next time just use
 
 Change to the required directory: 
 - cd Evaluation_of_Frame_Field_Learning_using_Orthophotos
+
+P.S.: It takes over an hour to create the complete environment.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DATASET
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
