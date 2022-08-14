@@ -77,7 +77,7 @@ CITY_METADATA_DICT = {
     'nienburg': {
         'fold': 'train',
         'pixelsize': 5, # 10000/2000 = image_size/pixel_size
-        "numbers": list(range(1, 17)),
+        "numbers": list(range(1, 16)),
         'mean':[0.4190, 0.4377, 0.4166],
         'std': [0.1842, 0.1540, 0.1365], 
     },
