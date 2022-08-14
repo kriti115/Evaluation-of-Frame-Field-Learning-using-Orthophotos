@@ -36,6 +36,8 @@ https://github.com/Lydorn/Polygonization-by-Frame-Field-Learning
 2. Large Scale Real World Dataset can be downloaded from the link below:
 https://tubcloud.tu-berlin.de/s/M6PobTMpaX6q7Ap
 
+Downloading the zip file called data and unzipping it inside the workspace as explained in the pr-trained model section would be better for complete and correct extraction of the contents. The zip folder already has the subfolders mentioned below.
+
 Store the dataset in a folder called data and save the annotations and images in subfolders as below:
 - data
   - PrivateDataset
