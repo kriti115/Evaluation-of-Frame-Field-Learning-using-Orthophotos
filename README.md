@@ -37,9 +37,6 @@ https://github.com/Lydorn/Polygonization-by-Frame-Field-Learning
 https://tubcloud.tu-berlin.de/s/M6PobTMpaX6q7Ap
 
 Downloading the zip file called data and unzipping it inside the workspace as explained in the pr-trained model section would be better for complete and correct extraction of the contents. The zip folder already has the required subfolders.
-        
-Train on raw images from scratch:
-The raw images are cropped into 725 x 725 patches and stored in a folder called processed which is created during the initial training. The calculation of tangent angle to be used as annotation for frame field is calculated during this step as well.
 
 The path of data directory must be changed in 'configs/config.defaults.json' in 'data_dir_candidates'.
 
@@ -50,6 +47,10 @@ If inference is not sufficient and training wants to be performed, it can begin 
 
 - python main.py --config configs/<name_of_config> --gpus 1
 - python main.py --config configs/private_dataset_polygonized.unet_resnet101_pretrained --gpus 1
+
+Train on raw images from scratch:
+- The raw images are cropped into 725 x 725 patches and stored in a folder called processed which is created during the initial training. The calculation of tangent angle to be used as annotation for frame field is calculated during this step as well.
+- Before calculation of loss starts, the patching of images takes place for all training images.
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
