@@ -122,7 +122,7 @@ The inference can be run on any image using the pre-trained models provided abov
 
 python main.py --in_filepath <path_to_image> --run_name <name_of_run>
 
-python main.py --in_filepath /home/jovyan/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --run_name private_dataset_polygonized_unet_resnet101_pretrained
+python main.py --in_filepath /home/Evaluation-of-Frame-Field-Learning-using-Orthophotos/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --run_name private_dataset_polygonized_unet_resnet101_pretrained
 
 Saves the predicted shapefiles in the same folder. In case the shapefiles are not saved, the config.json inside the runs folder can be changed to 'true' wherever necessary.
 
@@ -134,7 +134,7 @@ The IoU and tangent angle metrics can be evaluated for each image as below using
 1. change directory to scripts: cd scripts
 
 2. python eval_shapefiles.py --im_filepath <path_to_image> --gt_filepath <path_to_gt_shapefile> --pred_filepath <path_to_predicted_shapefiles>
-  - python eval_shapefiles.py --im_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --gt_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/shp/bad_bodenteich3.shp --pred_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/poly_shapefile.simple.tol_1/bad_bodenteich3.shp
+  - python eval_shapefiles.py --im_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --gt_filepath ~/Evaluation-of-Frame-Field-Learning-using-Orthophotos/data/PrivateDataset/raw/test/shp/bad_bodenteich3.shp --pred_filepath ~/Evaluation-of-Frame-Field-Learning-using-Orthophotos/data/PrivateDataset/raw/test/images/poly_shapefile.simple.tol_1/bad_bodenteich3.shp
   
 3. Run check.py to get the average values of IoU and tangent angle for each image.
 
@@ -181,7 +181,19 @@ The results for large scale real world dataset can be seen below where a buildin
 PREPARATION OF OWN DATASET
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-For preparation of own dataset to be inserted into the network the following repository can be used.
+For preparation of own dataset to be used for training the following repository can be used.
 
 https://github.com/kriti115/Dataset-Preparation-for-Frame-Field-Learning-using-Orthophotos
+
+One component of the annotation is not acquired above which is the gt_polygonized. For this, either the network needs to run on the existing dataset above or using the pre-trained model so that we have at least one run. This run is then used to run the script polygonize_mask.py inside scripts like so:
+- python polygonize_mask.py -f <path_to_the_respective_binary_mask(gt)> --run_name <name_of_the_run>
+- python polygonize_mask.py -f /home/Evaluation-of-Frame-Field-Learning-using-Orthophotos/PrivateDataset/raw/train/gt/.tif --run_name private_dataset_polygonized_unet_resnet101_pretrained
+The geojsons are saved in the same folder as the binary mask (gt). These can be saved inside the gt_polygonized folder of the train folder.
+
+Now, we have the complete annotations then we can move forward.
+1. The following script can be formatted, where the CITY_METADATA_DICT on Line 27 can be editted according to the number of images, pixelsize and their mean and standard deviation. 
+- pytorch_lydorn/torch_lydorn/torchvision/datasets/private_dataset.py
+2. Necessary additions needs to be made in the dataset_folds.py scripts as stated. 
+3. The data needs to be added into the data folder according to the subfolder presented in the data.zip file.
+
 Talk about polygonize_mask.py
