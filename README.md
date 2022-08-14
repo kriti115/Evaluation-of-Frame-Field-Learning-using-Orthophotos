@@ -54,6 +54,14 @@ Train on raw images from scratch:
 - The raw images are cropped into 725 x 725 patches and stored in a folder called processed which is created during the initial training. The calculation of tangent angle to be used as annotation for frame field is calculated during this step as well.
 - Before calculation of loss starts, the patching of images takes place for all training images.
 
+# Note:
+
+We have used numba=0.53.0 and in case of error such as: 
+
+AttributeError: module 'numba' has no attribute 'jitclass', the skan package needs to be edited due to incompability to the newer numba version.
+
+- Go to /home/frame_field/lib/python3.8/site-packages/skan/csr.py 
+- On Line 21 of csr.py, change '@numba.jitclass(csr_spec)' to '@numba.experimental.jitclass(csr_spec)'
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONFIGURATIONS
@@ -162,13 +170,4 @@ The results for large scale real world dataset can be seen below where a buildin
   <img src='images/uel3_curve_original.png' width = '250' height = '250'> <img src='images/uel3_asm_shadow_curve.png' width = '250' height = '250'>
 </p>
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-NOTES
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-The various errors that might pop up during training are discussed and clarified below for smooth implementation.
-We have used numba=0.53.0 and in case of error such as: 
 
-AttributeError: module 'numba' has no attribute 'jitclass', the skan package needs to be edited due to incompability to the newer numba version.
-
-- Go to /home/frame_field/lib/python3.8/site-packages/skan/csr.py 
-- On Line 21 change @numba.jitclass(csr_spec) to @numba.experimental.jitclass(csr_spec)
