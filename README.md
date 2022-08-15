@@ -65,10 +65,20 @@ AttributeError: module 'numba' has no attribute 'jitclass', the skan package nee
 - On Line 21 of csr.py, change '@numba.jitclass(csr_spec)' to '@numba.experimental.jitclass(csr_spec)'
 
 2. RuntimeError: DataLoader worker (pid(s) 11355) exited unexpectedly
-change num_workers to 0
+- In configs/config.defaults.json; change num_workers to 0
 
 3. ValueError: Number of processes must be at least 1
-change num_workers to 1
+- In configs/config.defaults.json; change num_workers to 1
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EVALUATION
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+For evaluation, the num_workers in the config.defaults.json should be atleast 1.
+
+- python main.py --config configs/<name_of_config> --mode eval
+- python main.py --config configs/private_dataset_polygonized.unet_resnet101_pretrained --mode eval
+
+First, the patching of the test images takes place.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONFIGURATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -82,7 +92,6 @@ The parameters can be changed accordingly depending on the experiment one wants 
 3. Hyperparameters: in configs/optim_params.json; the value for max_lr and base_lr can be changed for twaeking the learning rate.
 4. Frame field parameters: in configs/config.defaults.json; when the compute_crossfield parameter is set to false, the frame field is not computed and simple segmentation takes place.
 5. Segmentation parameters: in configs/config.defaults.json; in seg_params; when compute_edge is set to false, the exterior of the polygons is not considered during segmentation.
-
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PRE-TRAINED MODEL
