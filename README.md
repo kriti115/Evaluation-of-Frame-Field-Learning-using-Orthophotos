@@ -59,16 +59,16 @@ Train on raw images from scratch:
 
 1. We have used numba=0.53.0 and in case of error such as: 
 
-AttributeError: module 'numba' has no attribute 'jitclass', the skan package needs to be edited due to incompability to the newer numba version.
+  AttributeError: module 'numba' has no attribute 'jitclass', the skan package needs to be edited due to incompability to the newer numba version.
 
-- Go to /home/frame_field/lib/python3.8/site-packages/skan/csr.py 
-- On Line 21 of csr.py, change '@numba.jitclass(csr_spec)' to '@numba.experimental.jitclass(csr_spec)'
+    - Go to /home/frame_field/lib/python3.8/site-packages/skan/csr.py 
+    - On Line 21 of csr.py, change '@numba.jitclass(csr_spec)' to '@numba.experimental.jitclass(csr_spec)'
 
 2. RuntimeError: DataLoader worker (pid(s) 11355) exited unexpectedly
-- In configs/config.defaults.json; change num_workers to 0
+  - In configs/config.defaults.json; change num_workers to 0
 
 3. ValueError: Number of processes must be at least 1
-- In configs/config.defaults.json; change num_workers to 1
+  - In configs/config.defaults.json; change num_workers to 1
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 EVALUATION
@@ -79,6 +79,7 @@ For evaluation, the num_workers in the config.defaults.json should be atleast 1.
 - python main.py --config configs/private_dataset_polygonized.unet_resnet101_pretrained --mode eval
 
 First, the patching of the test images takes place. Evaluation requires quite a lot of disk space so might run into disk quota exceeded error. In that case, either free space if possible, else move on to inference. 
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONFIGURATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -133,7 +134,7 @@ The inference can be run on any image using the pre-trained models provided abov
 - python main.py --in_filepath /home/Evaluation-of-Frame-Field-Learning-using-Orthophotos/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --run_name private_dataset_polygonized_unet_resnet101_pretrained
 
 Saves the crossfield, masks and segmentation in the same folder as the image. 
-In order to save the shapefiles, in the config.json inside the runs folder, in the dictionary 'eval_params/save_individual_outputs', the necessary parameters can be changed to 'true'.
+In order to save the shapefiles, in the config.json inside the runs folder, in the dictionary 'eval_params/save_individual_outputs', the necessary parameters can be changed to 'true' for example the poly_shapefile saves the polygons as shapefiles which can be used to evaluate the metrics as explained below.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 METRICS
