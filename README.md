@@ -129,11 +129,11 @@ INFERENCE
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 The inference can be run on any image using the pre-trained models provided above or using a new run after training.
 
-python main.py --in_filepath <path_to_image> --run_name <name_of_run>
+- python main.py --in_filepath <path_to_image> --run_name <name_of_run>
+- python main.py --in_filepath /home/Evaluation-of-Frame-Field-Learning-using-Orthophotos/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --run_name private_dataset_polygonized_unet_resnet101_pretrained
 
-python main.py --in_filepath /home/Evaluation-of-Frame-Field-Learning-using-Orthophotos/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --run_name private_dataset_polygonized_unet_resnet101_pretrained
-
-Saves the predicted shapefiles in the same folder. In case the shapefiles are not saved, the config.json inside the runs folder can be changed to 'true' wherever necessary.
+Saves the crossfield, masks and segmentation in the same folder as the image. 
+In order to save the shapefiles, in the config.json inside the runs folder, in the dictionary 'eval_params/save_individual_outputs', the necessary parameters can be changed to 'true'.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 METRICS
