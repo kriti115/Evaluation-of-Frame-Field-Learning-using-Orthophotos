@@ -78,7 +78,7 @@ For evaluation, the num_workers in the config.defaults.json should be atleast 1.
 - python main.py --config configs/<name_of_config> --mode eval
 - python main.py --config configs/private_dataset_polygonized.unet_resnet101_pretrained --mode eval
 
-First, the patching of the test images takes place.
+First, the patching of the test images takes place. Evaluation requires quite a lot of disk space so might run into disk quota exceeded error. In that case, either free space if possible, else move on to inference. 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONFIGURATIONS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
