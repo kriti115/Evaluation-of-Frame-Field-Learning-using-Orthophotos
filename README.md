@@ -142,11 +142,10 @@ METRICS
 The IoU and tangent angle metrics can be evaluated for each image as below using the image and ground truth shapefile:
 
 1. change directory to scripts: cd scripts
-
-2. python eval_shapefiles.py --im_filepath <path_to_image> --gt_filepath <path_to_gt_shapefile> --pred_filepath <path_to_predicted_shapefiles>
+2. save the shapefiles for each image in the subfolder 'PrivateDataset/raw/test/shp/'
+3. python eval_shapefiles.py --im_filepath <path_to_image> --gt_filepath <path_to_gt_shapefile> --pred_filepath <path_to_predicted_shapefiles>
   - python eval_shapefiles.py --im_filepath ~/Polygonization-by-Frame-Field-Learning/data/PrivateDataset/raw/test/images/bad_bodenteich3.tif --gt_filepath ~/Evaluation-of-Frame-Field-Learning-using-Orthophotos/data/PrivateDataset/raw/test/shp/bad_bodenteich3.shp --pred_filepath ~/Evaluation-of-Frame-Field-Learning-using-Orthophotos/data/PrivateDataset/raw/test/images/poly_shapefile.simple.tol_1/bad_bodenteich3.shp
-  
-3. Run check.py to get the average values of IoU and tangent angle for each image.
+4. Run check.py to get the average values of IoU and tangent angle for each image.
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
