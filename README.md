@@ -194,7 +194,7 @@ For preparation of own dataset to be used for training the following repository 
 
 https://github.com/kriti115/Dataset-Preparation-for-Frame-Field-Learning-using-Orthophotos
 
-One component of the annotation is not acquired above which is the gt_polygonized. For this, either the network needs to run on the existing dataset above or using the pre-trained model so that we have at least one run. This run is then used to run the script polygonize_mask.py inside scripts like so:
+One component of the annotation is not acquired above which is the gt_polygonized. For this, either the network needs to run on the existing dataset above or using the pre-trained model so that we have at least one run. This run is then used to run the script polygonize_mask.py inside the scripts folder like so:
 - python polygonize_mask.py -f <path_to_the_respective_binary_mask(gt)> --run_name <name_of_the_run>
 - python polygonize_mask.py -f /home/Evaluation-of-Frame-Field-Learning-using-Orthophotos/PrivateDataset/raw/train/gt/.tif --run_name private_dataset_polygonized_unet_resnet101_pretrained
 The geojsons are saved in the same folder as the binary mask (gt). These can be saved inside the gt_polygonized folder of the train folder.
@@ -205,4 +205,9 @@ Now, we have the complete annotations then we can move forward.
 2. Necessary additions needs to be made in the dataset_folds.py scripts as stated. 
 3. The data needs to be added into the data folder according to the subfolder presented in the data.zip file.
 
-Talk about polygonize_mask.py
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Simple Segmentation Model
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+A link to a simple segmentation model has been provided below:
+
+https://github.com/kriti115/Binary-segmentation-model.git
